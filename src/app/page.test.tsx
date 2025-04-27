@@ -23,7 +23,7 @@ describe('When everything is OK', () => {
   test('should select the input element by its role', () => {
     screen.getAllByRole('textbox');
     expect(screen.getAllByRole('textbox')[0]).toBeInTheDocument();
-    expect(screen.getAllByRole('textbox').length).toEqual(1);
+    expect(screen.getAllByRole('textbox').length).toEqual(2);
   });
 
   test('should select a label element by its text', () => {
@@ -67,7 +67,7 @@ describe('When the user enters some text in the input element', () => {
 
     expect(screen.getByText(/You typed: .../));
 
-    await userEvent.type(screen.getByRole('textbox'), 'David');
+    await userEvent.type(screen.getAllByRole('textbox')[0], 'David');
 
     expect(screen.getByText(/You typed: David/));
   });
